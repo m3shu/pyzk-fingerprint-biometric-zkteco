@@ -1,0 +1,2 @@
+ip<space>port<space>communicationKey
+192.168.10.202 4370 12345
