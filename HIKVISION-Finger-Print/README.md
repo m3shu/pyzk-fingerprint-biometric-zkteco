@@ -56,3 +56,13 @@
 ----
 
 useful tutorial => [hikvision Time attendance device full set up in computer | hikvision time attendance configuration - YouTube](https://www.youtube.com/watch?v=36kwRgTRUDY)
+
+
+Experiment on device => hikvision ds k1t320efwx  
+
+Next Task  
+---------  
+1. Delete attendence data  
+3. Call to api after attendence  
+3. View data in website  
+
