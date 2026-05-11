@@ -1,7 +1,8 @@
 import requests
 from requests.auth import HTTPDigestAuth
 
-url = "http://192.168.1.165/ISAPI/AccessControl/AcsEvent?format=json"
+IP = "192.168.68.66"
+url = f"http://{IP}/ISAPI/AccessControl/AcsEvent?format=json"
 
 payload = {
   "AcsEventCond": {
@@ -17,7 +18,7 @@ payload = {
 r = requests.post(
     url,
     json=payload,
-    auth=HTTPDigestAuth("admin", "Iqra@12#"),
+    auth=HTTPDigestAuth("admin", "Mollah@26"), #Iqra@12#
     timeout=10
 )
 

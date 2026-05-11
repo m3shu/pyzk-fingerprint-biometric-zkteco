@@ -7,7 +7,8 @@
 2. Install and Configure via SADP Tool
 
 	Download and install the SADP Tool from the official Hikvision website:
-	https://www.hikvision.com/en/support/tools/hitools/clea8b3e4ea7da90a9/
+	https://www.hikvision.com/en/support/tools/hitools/
+	search => SADP
 
 	Launch SADP and complete the following steps:
 
@@ -65,4 +66,28 @@ Next Task
 1. Delete attendence data  
 3. Call to api after attendence  
 3. View data in website  
+
+
+Reset: System Maintenance > Reset to Factory Settings
+
+
+Sound 	: System Settings > Basic > Sound Settings = Off
+Sleeping: System Settings > Basic > Sleeping = 999
+
+
+Wifi	: System Settings > Communication > Wi-Fi
+Check IP: System Settings > Communication > Wi-Fi > Bonik
+Light 	: System Settings > Basic > Suppliment Light Settings > White Light = Disable
+
+
+
+DHCP		: On
+Ip Address	: 192.168.1.66
+
+
+Before Handover to Client
+------------------------
+Sleeping: System Settings > Basic > Sleeping = 20
+Light 	: System Settings > Basic > Suppliment Light Settings > White Light = Disable
+Sound 	: System Settings > Basic > Sound Settings = on
 
