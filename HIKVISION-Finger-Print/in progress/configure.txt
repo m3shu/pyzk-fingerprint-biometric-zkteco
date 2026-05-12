@@ -1,0 +1,6 @@
+Configuration > Network > Network Service
+HTTP(S) = Enable
+Event Alarm IP/Domain Name : 192.168.68.62 (server ip)
+Url : /
+Port : 5000
+Protocol : HTTP
