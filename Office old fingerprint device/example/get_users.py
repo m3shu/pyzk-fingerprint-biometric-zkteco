@@ -13,8 +13,10 @@ conn = None
 zk = ZK('192.168.1.201', port=4370)
 try:
     conn = zk.connect()
-    print ('Disabling device ...')
-    conn.disable_device()
+    
+    #print ('Disabling device ...')
+    #conn.disable_device()
+
     print ('--- Get User ---')
     users = conn.get_users()
     for user in users:
@@ -28,10 +30,12 @@ try:
         print ('  Group ID   : {}'.format(user.group_id))
         print ('  User  ID   : {}'.format(user.user_id))
 
-    print ("Voice Test ...")
-    conn.test_voice()
-    print ('Enabling device ...')
-    conn.enable_device()
+    #print ("Voice Test ...")
+    #conn.test_voice()
+
+    #print ('Enabling device ...')
+    #conn.enable_device()
+
 except Exception as e:
     print ("Process terminate : {}".format(e))
 finally:

@@ -9,13 +9,15 @@ sys.path.append(ROOT_DIR)
 
 from zk import ZK
 
+#for setting exact time
+nowTime = datetime.now()
 
 conn = None
-zk = ZK('192.168.2.201', port=4370)
+zk = ZK('192.168.1.201', port=4370)
 try:
     conn = zk.connect()
     print ("Syncing time...")
-    conn.set_time(datetime.now())
+    conn.set_time(nowTime)
 except Exception as e:
     print ("Process terminate : {}".format(e))
 finally:

@@ -1,25 +1,24 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-import time
+from datetime import datetime
 
 CWD = os.path.dirname(os.path.realpath(__file__))
 ROOT_DIR = os.path.dirname(CWD)
-print(ROOT_DIR)
 sys.path.append(ROOT_DIR)
 
 from zk import ZK
 
+#for setting specific time
+today = datetime.today()
+nowTime = today.replace(hour=9, minute=55, second=0, microsecond=0)
 
 conn = None
 zk = ZK('192.168.1.201', port=4370)
-time.sleep(20)
 try:
     conn = zk.connect()
-    for i in range(0, 11):
-        print ("Voice number #%d" % i)
-        conn.test_voice(i)
-        time.sleep(2)
+    print ("Syncing time...")
+    conn.set_time(nowTime)
 except Exception as e:
     print ("Process terminate : {}".format(e))
 finally:
