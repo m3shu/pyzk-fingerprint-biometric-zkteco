@@ -158,5 +158,5 @@ def handle_xml(xml_string):
 # RUN SERVER
 # ==============================
 if __name__ == "__main__":
-    print("🚀 Hikvision Listener Running on port 5000...")
-    app.run(host="0.0.0.0", port=5000)
+    print("Hikvision Listener Running on port 5000...")
+    app.run(host="192.168.68.95", port=5000)
