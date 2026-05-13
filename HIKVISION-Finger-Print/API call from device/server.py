@@ -23,8 +23,9 @@ def receive_event():
     raw = request.data.decode("utf-8", errors="ignore")
 
     # DEBUG LOG (VERY IMPORTANT for Hikvision)
-    print("RAW BODY:\n", raw)
-    print("FORM:", dict(request.form))
+    print("RAW BODY:")
+    print_pretty(raw)
+    print("FORM:", json.dumps(dict(request.form), indent=2, ensure_ascii=False))
     print("FILES:", list(request.files.keys()))
     print("==============================")
 
@@ -56,7 +57,6 @@ def receive_event():
         for key in request.form:
 
             payload = request.form[key]
-
             payload = payload.strip()
 
             if payload.startswith("{"):
@@ -69,7 +69,8 @@ def receive_event():
     # RESPONSE
     # ==============================
     if result:
-        print("✅ EVENT SUCCESS:", result)
+        print("✅ EVENT SUCCESS:")
+        print(json.dumps(result, indent=2, ensure_ascii=False))
 
         return jsonify({
             "status": "success",
@@ -87,6 +88,21 @@ def receive_event():
 
 
 # ==============================
+# PRETTY PRINT HELPER
+# ==============================
+def print_pretty(data):
+    """Pretty-print JSON strings or dicts; fallback to plain print."""
+    try:
+        if isinstance(data, str):
+            parsed = json.loads(data)
+        else:
+            parsed = data
+        print(json.dumps(parsed, indent=2, ensure_ascii=False))
+    except (json.JSONDecodeError, TypeError):
+        print(data)
+
+
+# ==============================
 # JSON HANDLER
 # ==============================
 def handle_json(data):
@@ -94,6 +110,9 @@ def handle_json(data):
     try:
         if isinstance(data, str):
             data = json.loads(data)
+
+        print("📦 Parsed JSON:")
+        print_pretty(data)
 
         # Hikvision structure (varies by firmware)
         event = data.get("Events") or data.get("event") or {}
@@ -114,7 +133,8 @@ def handle_json(data):
             "time": datetime.now().isoformat()
         }
 
-        print("✅ JSON EVENT:", result)
+        print("✅ JSON EVENT:")
+        print_pretty(result)
 
         return result
 
@@ -145,7 +165,8 @@ def handle_xml(xml_string):
             "time": datetime.now().isoformat()
         }
 
-        print("✅ XML EVENT:", result)
+        print("✅ XML EVENT:")
+        print_pretty(result)
 
         return result
 
